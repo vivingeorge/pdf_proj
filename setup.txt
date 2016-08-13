@@ -1,0 +1,4 @@
+superuser
+
+user : admin
+pass : adminadmin
