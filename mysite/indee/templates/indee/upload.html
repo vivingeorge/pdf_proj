@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h3>File Upload</h3>
+        <p>Please upload the file you want in View - Only mode</p>
+        <p>
+
+
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <br/>
+            <button type="submit" value="submit" class="btn btn-primary" >
+                Upload <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
+            </button>
+          </form>
+        </p>
+      </div>
+
+
+{% endblock %}

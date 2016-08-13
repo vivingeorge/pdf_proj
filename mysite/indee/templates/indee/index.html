@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <div class="jumbotron">
+            <!-- List of uploaded documents -->
+            {% if documents %}
+                <ul>
+                {% for document in documents %}
+                    <li><a href="/indee/pdf/public/{{ document.id }}">{{ document.id }} . {{ document.name }}</a>
+                        (Public URL : http://{{ SITE_URL }}/indee/pdf/public/{{ document.id }})
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+      </div>
+
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron" style="margin:0px;padding:0px;overflow:hidden" oncontextmenu="return false">
+            <!-- Showing Document  -->
+            {% if document %}
+                <!--<iframe src="{{ document.docfile.url }}"-->
+                    <!--style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" frameborder="0" oncontextmenu="return false"></iframe>-->
+                <img src="{{ document.imagefile }}" style="max-width:100%;display: block;margin: 0 auto"  alt=" Sorry !! Unable to load image" oncontextmenu="return false" />
+            {% else %}
+                <p>No Document Found !!</p>
+            {% endif %}
+      </div>
+
+<!--<p>-->
+    <!--<br/>ID : {{ document.id }}-->
+    <!--<br/>Name : {{ document.name }}-->
+    <!--<br/>File : {{ document.docfile.url }}-->
+    <!--<br/>Image : {{ document.imagefile }}-->
+<!--</p>-->
+
+{% endblock %}
+
+
+{% block post_script_js %}
+
+<script language="javascript">
+
+    document.onclick = document.body.onclick =disableclick;
+    document.onmousedown = document.body.onmousedown =disableclick;
+    document.onmouseup = document.body.onmouseup =disableclick;
+    document.oncontextmenu = document.body.oncontextmenu = function() {console.log("Event oncontextmenu");return false;}
+    document.oncopy = document.body.oncopy = function(){console.log("Event oncopy");return false;};
+    document.onbeforeprint = document.body.onbeforeprint = function(){console.log("Event onbeforeprint");return false;};
+    document.ctrlKey = document.body.ctrlKey = function(){console.log("Event ctrlKey");return false;};
+    //    Experiment for Cntr+U
+    //document.onkeydown = document.body.onkeydown =disableclick;
+    document.onkeydown = function(e) {
+        if (e.ctrlKey &&
+            (e.keyCode === 67 ||
+             e.keyCode === 86 ||
+             e.keyCode === 85 ||
+             e.keyCode === 117)) {
+            console.log('You are not allowed to access source code');
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+function disableclick(event)
+{
+    event = event || window.event;
+    if(event.button==2)
+    {
+        console.log("Right Click Disabled");
+        event.cancelBubble = true;
+        return false;
+    }
+}
+
+</script>
+
+{% endblock %}
