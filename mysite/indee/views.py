@@ -97,3 +97,7 @@ def public_viewer(request, pdf_id):
     return render(request, 'indee/viewer.html', {
         'document': document,
     })
+
+
+def no_permission(request):
+    return HttpResponse("You don't have permission to access this page !!")
